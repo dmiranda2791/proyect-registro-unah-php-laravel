@@ -29,6 +29,6 @@ class User extends Authenticatable
 
     public function secciones()
     {
-        return $this->belongsToMany('App\Seccion');
+        return $this->belongsToMany('App\Seccion', 'secciones_users');
     }
 }

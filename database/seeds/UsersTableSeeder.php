@@ -13,9 +13,12 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'Daniel Miranda',
-            'email' => 'dmiranda2791@gmail.com',
+            'cuenta' => '20142100023',
+            'name' => 'Karol Quintanilla',
+            'email' => 'karolkin10@gmail.com',
             'password' => Hash::make('hola1234'),
+            'carrera' => 'Ingeniería en Sistemas',
+            'centro' => 'UNAH'
         ]);
     }
 }

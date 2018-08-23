@@ -16,3 +16,9 @@
 ul {
   list-style: lower-roman;
 }
+
+.informacion-general {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
