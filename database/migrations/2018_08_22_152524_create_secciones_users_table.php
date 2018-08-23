@@ -18,6 +18,7 @@ class CreateSeccionesUsersTable extends Migration
             $table->timestamps();
             $table->integer('seccion_id')->unsigned()->index();
             $table->integer('user_id')->unsigned()->index();
+            $table->double('calificacion', null, 2);
 
             $table->foreign('seccion_id')->references('id')->on('secciones')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

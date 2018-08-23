@@ -17,6 +17,8 @@ class CreateClasesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('nombre');
+            $table->integer('uv');
+            $table->string('codigo');
         });
     }
 

@@ -18,6 +18,8 @@ class CreateSeccionesTable extends Migration
             $table->timestamps();
             $table->integer('clase_id')->unsigned()->index();
             $table->foreign('clase_id')->references('id')->on('clases')->onDelete('cascade');
+            $table->integer('periodo');
+            $table->integer('anio');
         });
     }
 

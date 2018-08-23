@@ -18,6 +18,8 @@ class ClasesDatabaseSeeder extends Seeder
         for ($i = 0; $i < sizeof($clases); $i++) {
             Clase::create([
                 'nombre' => $clases[$i],
+                'uv' => 4,
+                'codigo' => ('CL' . + ($i + 1))
             ]);
         }
     }

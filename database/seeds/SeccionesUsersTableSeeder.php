@@ -18,7 +18,8 @@ class SeccionesUsersTableSeeder extends Seeder
         for ($i = 0; $i < sizeof($seccionesIds); $i++) {
             DB::table('secciones_users')->insert([
                 'user_id' => $userIds[0]->id,
-                'seccion_id' => $seccionesIds[$i]->id
+                'seccion_id' => $seccionesIds[$i]->id,
+                'calificacion' => 90
             ]);
         }
     }

@@ -17,7 +17,9 @@ class SeccionesTableSeeder extends Seeder
 
         for ($i = 0; $i < sizeof($clases); $i++) {
             Seccion::create([
-                'clase_id' => $clases[$i]->id
+                'clase_id' => $clases[$i]->id,
+                'periodo' => 1,
+                'anio' => 2018
             ]);
         }
     }
