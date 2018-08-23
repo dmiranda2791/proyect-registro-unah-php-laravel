@@ -22,7 +22,7 @@ Route::get('products', function () {
     return response(['Product 1', 'Product 2', 'Product 3'],200);
 });
 
-Route::get('clases', 'ClasesController@index');
+Route::get('clases', 'ClaseController@index');
 
 Route::get('products/{product}', function ($productId) {
     return response()->json(['productId' => "{$productId}"], 200);

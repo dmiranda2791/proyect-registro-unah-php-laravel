@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Clases;
+use App\Clase;
 
 class ClasesDatabaseSeeder extends Seeder
 {
@@ -16,7 +16,7 @@ class ClasesDatabaseSeeder extends Seeder
         $clases = ["Español", "Matemáticas", "Bases de datos", "Sistemas Operativos"];
         // Create 50 product records
         for ($i = 0; $i < sizeof($clases); $i++) {
-            Clases::create([
+            Clase::create([
                 'nombre' => $clases[$i],
             ]);
         }

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Clases;
+use App\Clase;
 
-class ClasesController extends Controller
+class ClaseController extends Controller
 {
     public function index()
     {
-        return Clases::all();
+        return Clase::all();
     }
 }
