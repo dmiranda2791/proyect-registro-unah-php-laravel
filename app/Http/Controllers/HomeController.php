@@ -23,10 +23,37 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    private function calcularIndiceGlobal($historial) {
+        return round($this->promedioPonderado($historial), 0);
+    }
+
+    private function promedioPonderado($clases) {
+        $indicePeriodo = 0;
+        $sumaCalificaciones = 0;
+        $sumaUvs = 0;
+        for ($j = 0; $j < sizeof($clases); $j++) {
+            $sumaCalificaciones = $sumaCalificaciones + ($clases[$j]->calificacion * $clases[$j]->uv);
+            $sumaUvs = $sumaUvs + $clases[$j]->uv;
+        }
+        return $sumaCalificaciones/$sumaUvs;
+    }
+    private function calcularIndicePeriodo($historial, $periodo) {
+        $clasesPeriodo = [];
+        for($i=0; $i < sizeof($historial); $i++) {
+            if ($historial[$i]->periodo == $periodo) {
+                array_push($clasesPeriodo, $historial[$i]);
+            }
+        }
+        return $this->promedioPonderado($clasesPeriodo);
+    }
+
     public function index()
     {
         $user = Auth::user();
         $historial;
+        $indiceGlogal;
+        $indicePeriodo;
         if($user) {
             $historial = DB::table('users')
             ->where('users.id', $user->id)
@@ -35,7 +62,13 @@ class HomeController extends Controller
             ->join('clases', 'secciones.clase_id', '=', 'clases.id')
             ->select('clases.codigo', 'clases.nombre', 'secciones_users.calificacion', 'clases.uv', 'secciones.periodo', 'secciones.anio')
             ->get();
+            $indiceGlogal = $this->calcularIndiceGlobal($historial);
+            $indicePeriodo = $this->calcularIndicePeriodo($historial, 2);
         }
-        return view('home', ['historial' => $historial]);
+        return view('home', [
+            'historial' => $historial,
+            'indiceGlobal' => $indiceGlogal,
+            'indicePeriodo' => $indicePeriodo,
+        ]);
     }
 }

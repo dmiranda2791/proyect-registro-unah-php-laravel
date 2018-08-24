@@ -19,7 +19,7 @@ class SeccionesUsersTableSeeder extends Seeder
             DB::table('secciones_users')->insert([
                 'user_id' => $userIds[0]->id,
                 'seccion_id' => $seccionesIds[$i]->id,
-                'calificacion' => 90
+                'calificacion' => rand(70, 100)
             ]);
         }
     }

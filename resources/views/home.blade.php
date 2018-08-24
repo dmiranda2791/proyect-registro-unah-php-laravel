@@ -20,8 +20,8 @@
 
                     <div>
                         <div>Centro: {{ Auth::user()->centro }} <span class="caret"></span></div>
-                        <div>Indice Global:</div>
-                        <div>Indice Periodo:</div>
+                        <div>Indice Global: {{ $indiceGlobal }}</div>
+                        <div>Indice Periodo: {{ $indicePeriodo }}</div>
                     </div>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -37,7 +37,30 @@
                 <div class="card-header">Historial Académico</div>
 
                 <div class="card-body">
-                    {{ $historial }}
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Código</th>
+                                <th scope="col">Asignatura</th>
+                                <th scope="col">Calificación</th>
+                                <th scope="col">UV</th>
+                                <th scope="col">Periodo</th>
+                                <th scope="col">Año</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($historial as $clase)
+                            <tr>
+                                <td>{{$clase->codigo}}</td>
+                                <td>{{$clase->nombre}}</td>
+                                <td>{{$clase->calificacion}}</td>
+                                <td>{{$clase->uv}}</td>
+                                <td>{{$clase->periodo}}</td>
+                                <td>{{$clase->anio}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
